@@ -15,14 +15,14 @@ library(data.table)
 
 #load tables from directory
 
-features <- read.table("UCI HAR Dataset/features.txt", col.names = c("func_id","func_name"))
-activity_labels <- read.table("UCI HAR Dataset/activity_labels.txt", col.names = c("act_id", "act_name"))
-subject_test <- read.table("UCI HAR Dataset/test/subject_test.txt", col.names = "subject")
-x_test <- read.table("UCI HAR Dataset/test/X_test.txt", col.names = features$func_name)
-y_test <- read.table("UCI HAR Dataset/test/y_test.txt", col.names = "ylabel")
-subject_train <- read.table("UCI HAR Dataset/train/subject_train.txt", col.names = "subject")
-x_train <- read.table("UCI HAR Dataset/train/X_train.txt", col.names = features$func_name)
-y_train <- read.table("UCI HAR Dataset/train/y_train.txt", col.names = "ylabel")
+features          <- read.table("UCI HAR Dataset/features.txt", col.names = c("func_id","func_name"))
+activity_labels   <- read.table("UCI HAR Dataset/activity_labels.txt", col.names = c("act_id", "act_name"))
+subject_test      <- read.table("UCI HAR Dataset/test/subject_test.txt", col.names = "subject")
+x_test            <- read.table("UCI HAR Dataset/test/X_test.txt", col.names = features$func_name)
+y_test            <- read.table("UCI HAR Dataset/test/y_test.txt", col.names = "ylabel")
+subject_train     <- read.table("UCI HAR Dataset/train/subject_train.txt", col.names = "subject")
+x_train           <- read.table("UCI HAR Dataset/train/X_train.txt", col.names = features$func_name)
+y_train           <- read.table("UCI HAR Dataset/train/y_train.txt", col.names = "ylabel")
 
 # Task 1: combine dataset
 
@@ -40,18 +40,18 @@ RequestData$code <- activity_labels[RequestData$code, 2]
 
 # Task 4: Change names
 names(RequestData)[2] = "activity"
-names(RequestData)<-gsub("Acc", "Accelerometer", names(RequestData))
-names(RequestData)<-gsub("Gyro", "Gyroscope", names(RequestData))
-names(RequestData)<-gsub("BodyBody", "Body", names(RequestData))
-names(RequestData)<-gsub("Mag", "Magnitude", names(RequestData))
-names(RequestData)<-gsub("^t", "Time", names(RequestData))
-names(RequestData)<-gsub("^f", "Frequency", names(RequestData))
-names(RequestData)<-gsub("tBody", "TimeBody", names(RequestData))
-names(RequestData)<-gsub("-mean()", "Mean", names(RequestData), ignore.case = TRUE)
-names(RequestData)<-gsub("-std()", "STD", names(RequestData), ignore.case = TRUE)
-names(RequestData)<-gsub("-freq()", "Frequency", names(RequestData), ignore.case = TRUE)
-names(RequestData)<-gsub("angle", "Angle", names(RequestData))
-names(RequestData)<-gsub("gravity", "Gravity", names(RequestData))
+names(RequestData) <- gsub("Acc", "Accelerometer", names(RequestData))
+names(RequestData) <- gsub("Gyro", "Gyroscope", names(RequestData))
+names(RequestData) <- gsub("BodyBody", "Body", names(RequestData))
+names(RequestData) <- gsub("Mag", "Magnitude", names(RequestData))
+names(RequestData) <- gsub("^t", "Time", names(RequestData))
+names(RequestData) <- gsub("^f", "Frequency", names(RequestData))
+names(RequestData) <- gsub("tBody", "TimeBody", names(RequestData))
+names(RequestData) <- gsub("-mean()", "Mean", names(RequestData), ignore.case = TRUE)
+names(RequestData) <- gsub("-std()", "STD", names(RequestData), ignore.case = TRUE)
+names(RequestData) <- gsub("-freq()", "Frequency", names(RequestData), ignore.case = TRUE)
+names(RequestData) <- gsub("angle", "Angle", names(RequestData))
+names(RequestData) <- gsub("gravity", "Gravity", names(RequestData))
 
 # names(RequestData)
 
